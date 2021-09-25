@@ -3,7 +3,22 @@ import { Container } from './styles';
 import api from '../../services/api';
 import { useState } from 'react';
 
-export function Food({ food, handleEditFood, handleDelete }) {
+type FoodType = {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  available: boolean;
+  image: string;
+}
+
+interface FoodProps {
+  food: FoodType; 
+  handleEditFood: (food: FoodType) => void; 
+  handleDelete: (id: number) => void;
+}
+
+export function Food({ food, handleEditFood, handleDelete }: FoodProps) {
 
   const { available } = food;
   const [ isAvailable, setIsAvailable ] = useState(available)
